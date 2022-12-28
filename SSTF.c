@@ -26,18 +26,23 @@ int main()
     }
     printf("Enter Head Position : ");
     scanf("%d",&head);
-    int head_move = 0 ;
+    int head_move = 0 , seq[n] , k = 0;
     while(completed!=n)
     {
         int ind = search(req,visited,head,n) ;
         if(ind!=-1){
             visited[ind] = true ;
+            seq[k++] = req[ind] ;
             head_move += abs(head-req[ind]) ;
             head = req[ind] ;
             completed++ ;
         }
     }
-    printf("No. of Head Movements : %d \n",head_move);
+    printf("Seek Sequence : ");
+    for(i=0;i<n;i++){
+        printf("%d ",seq[i]) ;
+    }
+    printf("\nNo. of Head Movements : %d \n",head_move);
     printf("Average Head Movements : %.3f \n",(float)head_move/(float)n);
     return 0 ;
 }
